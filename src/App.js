@@ -1,9 +1,18 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Nav from './pages/Nav';
+import './styles/app.css';
 
 class App extends React.Component {
   render() {
-    // abrindo PR
-    return (<p>TrybeTunes</p>);
+    return (
+      <BrowserRouter>
+        <main className="main-app">
+          <p>TrybeTunes</p>
+          <Nav />
+        </main>
+      </BrowserRouter>
+    );
   }
 }
 

@@ -1,0 +1,13 @@
+body {
+  background-color: rgb(84, 177, 104);
+}
+
+.main-app {
+  align-items: center;
+  background-color: rgb(208, 231, 172);
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  justify-content: space-evenly;
+  width: 100vw;
+}
