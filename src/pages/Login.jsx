@@ -1,8 +1,9 @@
 import React from 'react';
+import '../styles/login.css';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import { createUser } from '../services/userAPI';
 
-class Search extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
 
@@ -22,7 +23,7 @@ class Search extends React.Component {
 
   isInputLoginEmpty = () => {
     const { inputName } = this.state;
-    const minLength = 2;
+    const minLength = 3;
     if (inputName.length >= minLength) {
       this.setState({ btnDisabled: false });
     } else {
@@ -34,16 +35,15 @@ class Search extends React.Component {
     const { inputName, btnDisabled } = this.state;
     const { history } = this.props;
     return (
-      <div data-testid="page-search">
-        <Header />
-        <h1>Search</h1>
-        <form onSubmit={ () => history.push('/search') }>
+      <div className="page-login" data-testid="page-login">
+        <form className="page-login-form" onSubmit={ () => history.push('/search') }>
+          <h1>TrybeTunes</h1>
           <h1>Login</h1>
           <fieldset className="login-fieldset">
             <label>
-              Nome do artista
+              Nome
               <input
-                data-testid="search-artist-input"
+                data-testid="login-name-input"
                 type="text"
                 name="inputName"
                 value={ inputName }
@@ -51,11 +51,11 @@ class Search extends React.Component {
               />
             </label>
             <button
-              data-testid="search-artist-button"
+              data-testid="login-submit-button"
               disabled={ btnDisabled }
               onClick={ () => createUser({ name: inputName }) }
             >
-              Pesquisar
+              Entrar
             </button>
           </fieldset>
         </form>
@@ -64,10 +64,10 @@ class Search extends React.Component {
   }
 }
 
-Search.propTypes = {
+Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default Search;
+export default Login;

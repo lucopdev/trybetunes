@@ -8,7 +8,6 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <main className="main-app">
-          <p>TrybeTunes</p>
           <Nav />
         </main>
       </BrowserRouter>

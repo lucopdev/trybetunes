@@ -1,13 +1,24 @@
 body {
-  background-color: rgb(84, 177, 104);
+  background-color: rgb(77, 77, 77);
+}
+
+.main-header {
+  align-items: center;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  width: 100%;
+}
+
+.main-p {
+  font-size: 50px;
 }
 
 .main-app {
   align-items: center;
-  background-color: rgb(208, 231, 172);
   display: flex;
   flex-direction: column;
-  height: 70vh;
-  justify-content: space-evenly;
-  width: 100vw;
+  height: 850px;
+  justify-content: space-between;
+  width: 100%;
 }

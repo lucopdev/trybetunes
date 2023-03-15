@@ -1,0 +1,39 @@
+.search-fieldset {
+  margin: 0 auto;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.226);
+  display: flex;
+  justify-content: space-evenly;
+  height: 100px;
+  width: 550px;
+}
+
+.search.search-fieldset, form, label, input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.result-board {
+  align-items: center;
+  background-color: rgba(244, 244, 253, 0.671);
+  display: flex;
+  flex-flow: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.result-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.album-div {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  width: 200px;
+}

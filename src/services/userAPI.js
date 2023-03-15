@@ -33,7 +33,6 @@ export const createUser = (user) => new Promise((resolve) => {
     image: '',
     description: '',
   };
-  // console.log(user);
   saveUser({ ...emptyUser, ...user });
   simulateRequest(SUCCESS_STATUS)(resolve);
 });
