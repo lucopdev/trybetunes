@@ -16,7 +16,6 @@ class AlbumBoard extends React.Component {
       apiResult,
     } = this.props;
     if (isLoading) return <Loading />;
-    console.log(albumData);
     return (
       <div>
         <section className="search-fieldset">

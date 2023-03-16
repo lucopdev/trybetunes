@@ -10,53 +10,56 @@ class MusicCard extends React.Component {
 
     this.state = {
       loading: false,
-      favourite: false,
+      favoritedTracks: [],
     };
+
+    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
-  onInputChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [name]: value }, () => this.favouriteTrack(target));
-  };
+  async componentDidMount() {
+    this.setState({ loading: true });
+    const gettedFavoriteSongs = await getFavoriteSongs();
+    this.setState({
+      favoritedTracks: gettedFavoriteSongs,
+      loading: false,
+    });
+  }
 
-  favouriteTrack = (target) => {
+  favoriteTrack = async (song, id) => {
+    const { favoritedTracks } = this.state;
     this.setState({
       loading: true,
-    }, () => {
-      const { musicData } = this.props;
-      const findedMusic = musicData
-        .find((track) => Number(target.className) === track.trackId);
-      if (target.checked) {
-        addSong(findedMusic);
-      } else {
-        removeSong(findedMusic);
-      }
-      this.setState({
-        loading: false,
-      }, this.recoveryFavorited());
     });
-  };
-
-  recoveryFavorited = () => {
-    console.log(getFavoriteSongs());
+    if (favoritedTracks.some((fav) => fav.trackId === id)) {
+      await removeSong(song);
+      const newFavorite = favoritedTracks.filter((fav) => fav.trackId !== id);
+      this.setState({ favoritedTracks: newFavorite });
+    } else {
+      await addSong(song);
+      this.setState((prevState) => ({
+        favoritedTracks: [...prevState.favoritedTracks, song],
+      }));
+    }
+    this.setState({
+      loading: false,
+    });
   };
 
   render() {
     const { musicData } = this.props;
-    const { loading, favourite } = this.state;
+    const { loading, favoritedTracks } = this.state;
     if (loading) return <Loading />;
     return (
       <div className="music-card">
         {musicData
           .map((track, index) => (
             <section className="track-section" key={ index }>
+              {/* { !loading ? <Loading /> : <span>Favorita</span>} */}
               <input
-                name="favourite"
-                value={ favourite }
-                className={ track.trackId }
+                name="isFavoriteSongs"
                 data-testid={ `checkbox-music-${track.trackId}` }
-                onChange={ this.onInputChange }
+                onChange={ () => this.favoriteTrack(track, track.trackId) }
+                checked={ favoritedTracks.some((fav) => fav.trackId === track.trackId) }
                 type="checkbox"
               />
               <div className="head-track">
