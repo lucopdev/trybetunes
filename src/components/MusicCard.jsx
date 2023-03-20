@@ -54,14 +54,17 @@ class MusicCard extends React.Component {
         {musicData
           .map((track, index) => (
             <section className="track-section" key={ index }>
-              {/* { !loading ? <Loading /> : <span>Favorita</span>} */}
-              <input
-                name="isFavoriteSongs"
-                data-testid={ `checkbox-music-${track.trackId}` }
-                onChange={ () => this.favoriteTrack(track, track.trackId) }
-                checked={ favoritedTracks.some((fav) => fav.trackId === track.trackId) }
-                type="checkbox"
-              />
+              <label>
+                Favorita
+                <input
+                  name="isFavoriteSongs"
+                  data-testid={ `checkbox-music-${track.trackId}` }
+                  onChange={ () => this.favoriteTrack(track, track.trackId) }
+                  checked={ favoritedTracks.some((fav) => (
+                    fav.trackId === track.trackId)) }
+                  type="checkbox"
+                />
+              </label>
               <div className="head-track">
                 <p className="track-name">{track.trackName}</p>
                 <audio

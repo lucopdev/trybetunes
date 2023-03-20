@@ -38,7 +38,6 @@ class Search extends React.Component {
       copyInputArtist: inputArtist,
       albumData: albums,
       inputArtist: '',
-      isLoading: false,
       hasResult: true,
       btnDisabled: true,
     });

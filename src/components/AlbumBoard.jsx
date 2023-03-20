@@ -14,8 +14,45 @@ class AlbumBoard extends React.Component {
       isLoading,
       onInputChange,
       apiResult,
+      hasResult,
     } = this.props;
+    const returnJSX = albumData.length > 0 ? (
+      <section className="result-container">
+        <p>
+          Resultado de álbuns de:
+          {' '}
+          {copyInputArtist}
+        </p>
+        <div className="result-board">
+          {
+            albumData
+              .map(({ collectionId, artistName, artworkUrl100, collectionName }) => (
+                <Link
+                  className="link-album"
+                  key={ collectionId }
+                  data-testid={ `link-to-album-${collectionId}` }
+                  to={ `/album/${collectionId}` }
+                >
+                  <div className="album-div">
+                    <img
+                      className="album-cover"
+                      src={ artworkUrl100 }
+                      alt="capa do disco"
+                    />
+                    <div className="name-collection-div">
+                      <p>{artistName}</p>
+                      <p>{collectionName}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))
+          }
+        </div>
+      </section>
+    ) : 'Nenhum álbum foi encontrado.';
+
     if (isLoading) return <Loading />;
+
     return (
       <div>
         <section className="search-fieldset">
@@ -39,33 +76,7 @@ class AlbumBoard extends React.Component {
             </button>
           </form>
         </section>
-        {albumData.length > 0 ? (
-          <section className="result-container">
-            <p>
-              Resultado de álbuns de:
-              {' '}
-              {copyInputArtist}
-            </p>
-            <div className="result-board">
-              {
-                albumData
-                  .map(({ collectionId, artistName, artworkUrl100, collectionName }) => (
-                    <Link
-                      key={ collectionId }
-                      data-testid={ `link-to-album-${collectionId}` }
-                      to={ `/album/${collectionId}` }
-                    >
-                      <div className="album-div">
-                        <img src={ artworkUrl100 } alt="capa do disco" />
-                        <p>{artistName}</p>
-                        <p>{collectionName}</p>
-                      </div>
-                    </Link>
-                  ))
-              }
-            </div>
-          </section>
-        ) : 'Nenhum álbum foi encontrado'}
+        { hasResult ? returnJSX : ''}
       </div>
     );
   }
@@ -81,6 +92,7 @@ AlbumBoard.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   apiResult: PropTypes.func.isRequired,
+  hasResult: PropTypes.bool.isRequired,
 };
 
 export default AlbumBoard;

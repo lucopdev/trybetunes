@@ -12,7 +12,6 @@ class Header extends React.Component {
       apiData: [],
       loading: true,
     };
-    this.componentDidMount = this.componentDidMount.bind(this);
   }
 
   async componentDidMount() {
@@ -30,36 +29,46 @@ class Header extends React.Component {
     } = this.state;
     if (loading) return <Loading />;
     return (
-      <header className="header-component" data-testid="header-component">
-        <section className="header-section">
+      <header className="header-section" data-testid="header-component">
+        <Link
+          className="link-nav"
+          data-testid="link-to-search"
+          to="/search"
+        >
+          Pesquisa
+        </Link>
+        <Link
+          className="link-nav"
+          data-testid="link-to-favorites"
+          to="/favorites"
+        >
+          Favoritas
+        </Link>
+        <Link
+          className="link-nav"
+          data-testid="link-to-profile"
+          to="/profile"
+        >
+          Perfil
+        </Link>
+        <div className="login-btn-div">
+          <div className="user-name-div">
+            <p
+              className="user-name"
+              data-testid="header-user-name"
+            >
+              {apiData.name}
+            </p>
+          </div>
           <Link
-            className="link-nav"
-            data-testid="link-to-search"
-            to="/search"
+            className="link-p"
+            to="/"
           >
-            Pesquisa
+            <div className="link-p-div">
+              <p>Logout</p>
+            </div>
           </Link>
-          <Link
-            className="link-nav"
-            data-testid="link-to-favorites"
-            to="/favorites"
-          >
-            Favoritas
-          </Link>
-          <Link
-            className="link-nav"
-            data-testid="link-to-profile"
-            to="/profile"
-          >
-            Perfil
-          </Link>
-          <h1
-            className="user-name"
-            data-testid="header-user-name"
-          >
-            {`Olá ${apiData.name}`}
-          </h1>
-        </section>
+        </div>
       </header>
     );
   }

@@ -17,11 +17,13 @@
 .result-board {
   align-items: center;
   background-color: rgba(244, 244, 253, 0.671);
+  border: 3px inset;
+  box-shadow: -5px -5px 10px rgba(0, 0, 0, 0.397);
   display: flex;
   flex-flow: wrap;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
+  width: 96vw;
 }
 
 .result-container {
@@ -32,8 +34,42 @@
 }
 
 .album-div {
+  align-items: center;
+  background-color: grey;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 130px;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  width: 250px;
+}
+
+.album-cover {
+  width: 100px;
+}
+
+.name-collection-div {
+  text-align: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin: 20px;
-  width: 200px;
+  justify-content: center;
+}
+
+.name-collection-div p {
+  font-size: 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.link-album {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .search-fieldset {
+    width: 80%;
+  }  
 }
