@@ -43,10 +43,7 @@
   width: 80%;
 }
 
-@media screen and (max-width: 1000px ){
-  .track-section {
-    width: 100%;
-  }
+@media screen and ( max-width : 1000px ) {
 
   .audio-paddle {
     width: 100%;

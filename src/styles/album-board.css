@@ -51,25 +51,26 @@
 }
 
 .name-collection-div {
-  text-align: center;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 .name-collection-div p {
+  color: black;
   font-size: 12px;
   text-decoration: none;
-  color: black;
 }
 
 .link-album {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and ( max-width : 1000px ) {
+
   .search-fieldset {
     width: 80%;
-  }  
+  }
 }

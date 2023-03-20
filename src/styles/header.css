@@ -61,11 +61,12 @@
 .link-p {
   color: white;
   font-size: 12px;
-  text-decoration: none;
   padding: 5px;
+  text-decoration: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and ( max-width : 1000px ) {
+
   .header-section {
     width: 100vw;
   }
