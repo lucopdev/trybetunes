@@ -25,7 +25,7 @@ class MusicCard extends React.Component {
     });
   }
 
-  //
+  // modificação
   favoriteTrack = async (song, id) => {
     const { favoritedTracks } = this.state;
     this.setState({
