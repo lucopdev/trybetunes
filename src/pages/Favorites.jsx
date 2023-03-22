@@ -10,19 +10,24 @@ class Favorites extends React.Component {
   };
 
   async componentDidMount() {
-    this.setState({ favoritedSongs: await getFavoriteSongs() });
+    this.updateFavorites();
   }
 
-  async componentDidUpdate() {
-    this.setState({ favoritedSongs: await getFavoriteSongs() });
-  }
+  updateFavorites = async () => {
+    const getAwait = await getFavoriteSongs();
+    this.setState({ favoritedSongs: getAwait });
+  };
 
   render() {
     const { favoritedSongs } = this.state;
     return (
       <div className="favorites-page" data-testid="page-favorites">
         <Header />
-        <MusicCard musicData={ favoritedSongs } />
+        <h1>Favoritas</h1>
+        <MusicCard
+          musicData={ favoritedSongs }
+          updateFavorites={ this.updateFavorites }
+        />
       </div>
     );
   }

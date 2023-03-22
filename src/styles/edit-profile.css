@@ -1,0 +1,53 @@
+.profile-edit-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-edit-page h1 {
+  color: white;
+}
+
+.edit-profile-form {
+  align-items: center;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-evenly;
+  padding: 50px;
+  width: 450px;
+}
+
+.edit-profile-form div {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.edit-profile-form span {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.edit-profile-form input {
+  margin: 0;
+  width: 200px;
+}
+
+.edit-profile-form textarea {
+  width: 200px;
+}
+
+.edit-profile-form img {
+  border: 2px solid white;
+  border-radius: 500px;
+  height: 100px;
+  margin-right: 10px;
+  width: 100px;
+}

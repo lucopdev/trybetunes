@@ -1,3 +1,35 @@
 .page-profile {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+}
+
+.page-profile h1 {
+  color: white;
+}
+
+.profile-area {
+  align-items: center;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  justify-content: space-evenly;
+  padding: 50px;
+  width: 450px;
+}
+
+.page-profile-div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-profile-img {
+  border: 2px solid white;
+  border-radius: 500px;
+  margin-bottom: 10px;
+  height: 150px;
+  width: 150px;
 }

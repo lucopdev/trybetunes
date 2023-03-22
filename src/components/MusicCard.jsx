@@ -5,16 +5,10 @@ import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongs
 import Loading from './Loading';
 
 class MusicCard extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      loading: false,
-      favoritedTracks: [],
-    };
-
-    this.componentDidMount = this.componentDidMount.bind(this);
-  }
+  state = {
+    loading: false,
+    favoritedTracks: [],
+  };
 
   async componentDidMount() {
     this.setState({ loading: true });
@@ -28,18 +22,20 @@ class MusicCard extends React.Component {
   // modificação
   favoriteTrack = async (song, id) => {
     const { favoritedTracks } = this.state;
+    const { updateFavorites } = this.props;
     this.setState({
       loading: true,
     });
     if (favoritedTracks.some((fav) => fav.trackId === id)) {
-      await removeSong(song);
       const newFavorite = favoritedTracks.filter((fav) => fav.trackId !== id);
       this.setState({ favoritedTracks: newFavorite });
+      await removeSong(song);
+      await updateFavorites();
     } else {
-      await addSong(song);
       this.setState((prevState) => ({
         favoritedTracks: [...prevState.favoritedTracks, song],
       }));
+      await addSong(song);
     }
     this.setState({
       loading: false,
@@ -88,6 +84,7 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
+  updateFavorites: PropTypes.func.isRequired,
   musicData: PropTypes.arrayOf(PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
