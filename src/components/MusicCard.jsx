@@ -22,7 +22,7 @@ class MusicCard extends React.Component {
   // modificação
   favoriteTrack = async (song, id) => {
     const { favoritedTracks } = this.state;
-    const { updateFavorites } = this.props;
+    // const { updateFavorites } = this.props;
     this.setState({
       loading: true,
     });
@@ -30,7 +30,7 @@ class MusicCard extends React.Component {
       const newFavorite = favoritedTracks.filter((fav) => fav.trackId !== id);
       this.setState({ favoritedTracks: newFavorite });
       await removeSong(song);
-      await updateFavorites();
+      // await updateFavorites();
     } else {
       this.setState((prevState) => ({
         favoritedTracks: [...prevState.favoritedTracks, song],
@@ -84,11 +84,11 @@ class MusicCard extends React.Component {
 }
 
 MusicCard.propTypes = {
-  updateFavorites: PropTypes.func.isRequired,
   musicData: PropTypes.arrayOf(PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
   })).isRequired,
+  // updateFavorites: PropTypes.func.isRequired,
 };
 
 export default MusicCard;
